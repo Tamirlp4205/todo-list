@@ -2,3 +2,81 @@
     margin: 0%;
     box-sizing: border-box;
 }
+.bigone{
+    background-color: rgb(20, 20, 20);
+    height: 100vh;
+}
+.header{
+   height: 15vh;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+#btn{
+    background-color: green;
+    height: 60px;
+    width: 100px;
+    border-radius: 8px;
+    border: none;
+    margin-right: 60px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #333333;
+}
+.container{
+    margin:0 60px 0 60px ;
+    display: flex;
+    gap: 40px;
+    height: 85vh;
+}
+.big{
+    background-color: black;
+    height: 80vh;
+    width: 305px;
+    border-radius: 20px;
+    border: 2px solid #333333;
+}
+.nav{
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    margin:20px 0 0 10px ;
+}
+#icon {
+       font-size: 10px;
+       color: white;
+       margin: 5px 10px 5px 10px;
+}
+#number{
+    margin-left: 170px;
+    color: #333333;
+}
+.nav p{
+    margin-left: 4px;
+}
+.todo{
+    height: 60px;
+    width: 280px;
+    background-color: rgb(20, 20, 20);
+    margin: 10px;
+    border-radius: 6px;
+    display: flex;
+    color: rgb(66, 63, 63);
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+#card{
+    width: 160px;
+}
+#pen{
+      font-size: 16px;
+      background-color:rgb(20, 20, 20) ;
+      border: none;
+}
+#trash{
+    font-size: 16px;
+    background-color: rgb(20, 20, 20);
+    border: none ;
+}
