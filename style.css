@@ -42,6 +42,11 @@
     color: white;
     display: flex;
     margin:20px 0 0 10px ;
+    justify-content: space-between;
+}
+.navbar{
+    display: flex;
+    gap: 8px;
 }
 #icon {
        font-size: 10px;
@@ -49,11 +54,8 @@
        margin: 5px 10px 5px 10px;
 }
 #number{
-    margin-left: 170px;
     color: #333333;
-}
-.nav p{
-    margin-left: 4px;
+    margin-right: 10px;
 }
 .todo{
     height: 60px;
@@ -79,4 +81,33 @@
     font-size: 16px;
     background-color: rgb(20, 20, 20);
     border: none ;
+}
+#icon3{
+    font-size: 10px;
+    margin: 5px 10px 5px 10px;
+    color: yellow;
+}
+.todoafter{
+    background-color: white;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+dialog{
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+}
+
+::backdrop{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    opacity: 0.5;
 }
