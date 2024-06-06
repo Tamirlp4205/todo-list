@@ -112,29 +112,19 @@ function createTask() {
   let column;
             switch (status) {
                 case 'todo':
-                    column = document.getElementById('todo-column');
+                    column = document.getElementById('todocolumn');
                     break;
                 case 'progress':
-                    column = document.getElementById('progress-column');
+                    column = document.getElementById('progresscolumn');
                     break;
                 case 'done':
-                    column = document.getElementById('done-column');
+                    column = document.getElementById('donecolumn');
                     break;
                 case 'block':
-                    column = document.getElementById('block-column');
+                    column = document.getElementById('blockcolumn');
                     break;
             }
 
             column.appendChild(todo);
-            updateTaskCount();
             dialog.close();
 }
-
-function updateTaskCount() {
-  document.getElementById('number-todo').textContent = document.getElementById('todocolumn').getElementsByClassName('todo').length;
-  document.getElementById('number-progress').textContent = document.getElementById('progresscolumn').getElementsByClassName('todo').length;
-  document.getElementById('number-done').textContent = document.getElementById('donecolumn').getElementsByClassName('todo').length;
-  document.getElementById('number-block').textContent = document.getElementById('blockcolumn').getElementsByClassName('todo').length;
-}
-
-updateTaskCount();
