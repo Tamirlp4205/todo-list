@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoList</title>
+    <style>
+        * {
+            margin: 0%;
+            box-sizing: border-box;
+        }
+
+        .bigone {
+            background-color: rgb(20, 20, 20);
+            height: 100vh;
+        }
+
+        .header {
+            height: 15vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #btn {
+            background-color: green;
+            height: 60px;
+            width: 100px;
+            border-radius: 8px;
+            border: none;
+            margin-right: 60px;
+            font-weight: bold;
+            color: white;
+            border: 1px solid #333333;
+            cursor: pointer;
+        }
+
+        .container {
+            margin: 0 60px 0 60px;
+            display: flex;
+            gap: 40px;
+            height: 85vh;
+        }
+
+        .big {
+            background-color: black;
+            height: 80vh;
+            width: 305px;
+            border-radius: 20px;
+            border: 2px solid #333333;
+        }
+
+        .nav {
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            margin: 20px 0 0 10px;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 8px;
+        }
+
+        .circle {
+            background: white;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            margin: 5px;
+        }
+
+        #number {
+            color: #333333;
+            margin-right: 10px;
+        }
+
+        .todo {
+            height: 60px;
+            width: 280px;
+            background-color: rgb(20, 20, 20);
+            margin: 10px;
+            border-radius: 6px;
+            display: flex;
+            color: rgb(66, 63, 63);
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #card {
+            width: 160px;
+        }
+
+        #pen {
+            font-size: 16px;
+            background-color: rgb(20, 20, 20);
+            border: none;
+        }
+
+        #trash {
+            font-size: 16px;
+            background-color: rgb(20, 20, 20);
+            border: none;
+        }
+
+        #icon3 {
+            font-size: 10px;
+            margin: 5px 10px 5px 10px;
+            color: yellow;
+        }
+
+        .todoafter {
+            width: 250px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btnback {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 6px;
+        }
+
+        dialog {
+            background-color: rgb(255, 251, 251);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        input {
+            border-radius: 6px;
+        }
+
+        select {
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        ::backdrop {
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            padding: 0%;
+            opacity: 0.5;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="bigone">
+        <div class="header">
+            <dialog class="dialog">
+                <div class="todoafter">
+                    <label for="purpose">Purpose</label>
+                    <input type="text" id="purpose"><br>
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="todo"> To do</option>
+                        <option value="progress">In progress</option>
+                        <option value="done">Done</option>
+                        <option value="block">Blocked</option>
+                    </select>
+                    <label for="rank">Rank</label>
+                    <select id="rank">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <button class="btnback" onclick="createTask()">add</button>
+                </div>
+            </dialog>
+            <button id="btn">add Task</button>
+        </div>
+        <div class="container">
+        </div>
+    </section>
+    <script>
+        const dialog = document.querySelector("dialog");
+        const showButton = document.querySelector("#btn");
+        const closeButton = document.querySelector("dialog .btnback");
+
+        showButton.addEventListener("click", () => {
+            dialog.showModal();
+        });
+
+        closeButton.addEventListener("click", () => {
+            dialog.close();
+        });
+
+        const body = document.getElementsByTagName('body')[0];
+        const section = document.getElementsByClassName('bigone')[0];
+        const container = document.getElementsByClassName('container')[0];
+
+        function createColumn(title, number, color) {
+            const big = document.createElement('div');
+            big.className = 'big';
+
+            const nav = document.createElement('div');
+            nav.className = 'nav';
+
+            const navbar = document.createElement('div');
+            navbar.className = 'navbar';
+
+            const circle = document.createElement("div");
+            circle.classList.add("circle");
+            circle.classList.add(color);
+
+            const todoText = document.createElement('p');
+            todoText.id = 'todo';
+            todoText.textContent = title;
+
+            const num = document.createElement('p');
+            num.id = 'number';
+            num.textContent = number;
+
+            navbar.appendChild(circle);
+            navbar.appendChild(todoText);
+            nav.appendChild(navbar)
+            nav.appendChild(num);
+            big.appendChild(nav);
+
+            return big;
+        }
+
+        const todo = createColumn('To do', 0, 'white');
+        todo.id = 'todocolumn';
+        const progress = createColumn('In Progress', 0, 'yellow');
+        progress.id = "progresscolumn";
+        const done = createColumn('Done', 0, 'blue');
+        done.id = 'donecolumn';
+        const block = createColumn('Blocked', 0, 'red');
+        block.id = 'blockcolumn';
+        container.appendChild(todo);
+        container.appendChild(progress);
+        container.appendChild(done);
+        container.appendChild(block);
+        section.appendChild(container);
+        body.appendChild(section);
+
+        function createTask() {
+            const purpose = document.getElementById('purpose').value;
+            const status = document.getElementById('status').value;
+
+            const todo = document.createElement('div');
+            todo.className = 'todo';
+
+            const card = document.createElement('p');
+            card.id = 'card';
+            card.textContent = purpose;
+
+            const pen = document.createElement('button');
+            pen.id = 'pen';
+            pen.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_4010_9)">
+                    <path d="M11.3333 2.00001C11.5031 1.79936 11.7131 1.63605 11.95 1.52046C12.1869 1.40488 12.4454 1.33956 12.7091 1.32868C12.9728 1.3178 13.2359 1.36159 13.4816 1.45727C13.7273 1.55294 13.9502 1.69839 14.1362 1.88435C14.3221 2.07032 14.4671 2.29272 14.5617 2.53737C14.6563 2.78202 14.6985 3.04356 14.6857 3.30533C14.6729 3.56709 14.6053 3.82333 14.4872 4.05772C14.3692 4.29211 14.2032 4.4995 14 4.66667L4.99998 13.6667L1.33331 14.6667L2.33331 11L11.3333 2.00001Z" stroke="#999999" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 3.33333L12.6667 5.99999" stroke="#999999" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_4010_9">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+            `;
+
+            const trash = document.createElement('button');
+            trash.id = 'trash';
+            trash.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 4H14" stroke="#A30000" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.6667 4V13.3333C12.6667 14 12 14.6667 11.3333 14.6667H4.66668C4.00001 14.6667 3.33334 14 3.33334 13.3333V4" stroke="#A30000" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.33334 3.99999V2.66666C5.33334 1.99999 6.00001 1.33333 6.66668 1.33333H9.33334C10 1.33333 10.6667 1.99999 10.6667 2.66666V3.99999" stroke="#A30000" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6.66666 7.33333V11.3333" stroke="#A30000" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9.33334 7.33333V11.3333" stroke="#A30000" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            `;
+
+            todo.appendChild(card);
+            todo.appendChild(pen);
+            todo.appendChild(trash);
+
+            let column;
+            switch (status) {
+                case 'todo':
+                    column = document.getElementById('todocolumn');
+                    break;
+                case 'progress':
+                    column = document.getElementById('progresscolumn');
+                    break;
+                case 'done':
+                    column = document.getElementById('donecolumn');
+                    break;
+                case 'block':
+                    column = document.getElementById('blockcolumn');
+                    break;
+            }
+
+            column.appendChild(todo);
+
+            const numberElement = column.querySelector('#number');
+            const currentNumber = parseInt(numberElement.textContent);
+            numberElement.textContent = currentNumber + 1;
+
+            dialog.close();
+        }
+    </script>
+</body>
+
+</html>

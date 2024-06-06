@@ -65,7 +65,6 @@ container.appendChild(block);
 section.appendChild(container);
 body.appendChild(section);
 
-
 function createTask() {
   const purpose = document.getElementById('purpose').value;
   const status = document.getElementById('status').value;
@@ -126,5 +125,8 @@ function createTask() {
             }
 
             column.appendChild(todo);
+            const numberElement = column.querySelector('#number');
+            const currentNumber = parseInt(numberElement.textContent);
+            numberElement.textContent = currentNumber + 1;
             dialog.close();
 }
