@@ -22,6 +22,7 @@
     font-weight: bold;
     color: white;
     border: 1px solid #333333;
+    cursor: pointer;
 }
 .container{
     margin:0 60px 0 60px ;
@@ -48,10 +49,16 @@
     display: flex;
     gap: 8px;
 }
-#icon {
-       font-size: 10px;
-       color: white;
-       margin: 5px 10px 5px 10px;
+.circle {
+    background: white;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    margin: 5px;
 }
 #number{
     color: #333333;
@@ -88,7 +95,6 @@
     color: yellow;
 }
 .todoafter{
-    background-color: white;
     width: 250px;
     height: 150px;
     display: flex;
@@ -96,18 +102,36 @@
     justify-content: center;
     align-items: center;
 }
+.btnback{
+    background-color: rgba(255,255,255,0,8);
+    border-radius: 6px;
+}
 dialog{
-    background-color: black;
+    background-color: rgb(255, 251, 251);
     position: absolute;
     top: 50%;
     left: 50%;
-
 }
-
+input{
+    border-radius: 6px;
+}
+select{
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
 ::backdrop{
     background-color: black;
     width: 100vw;
     height: 100vh;
     padding: 0%;
     opacity: 0.5;
+}
+.yellow{
+    background-color: yellow;
+}
+.blue{
+    background-color: blue;
+}
+.red{
+    background-color: red;
 }
