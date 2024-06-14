@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 24px;
+        width: calc((85px * 4) + 8px * 3);
+      }
+
+      .btn-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .btn {
+        width: 85px;
+        height: 36px;
+        background: #5f6368;
+        color: #e8eaed;
+        border: 1px solid #5f6368;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        width: 100%;
+        text-align: right;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="screen">
+        <input type="text" />
+      </div>
+      <div class="btn-container">
+        <div class="btn helper">(</div>
+        <div class="btn helper">)</div>
+        <div class="btn" onclick="log('%')">%</div>
+        <div class="btn" onclick="log('ac')">ac</div>
+        <div class="btn" onclick="log('7')">7</div>
+        <div class="btn" onclick="log('8')">8</div>
+        <div class="btn" onclick="log('9')">9</div>
+        <div class="btn" onclick="log('/')">/</div>
+        <div class="btn" onclick="log('4')">4</div>
+        <div class="btn" onclick="log('5')">5</div>
+        <div class="btn" onclick="log('6')">6</div>
+        <div class="btn" onclick="log('*')">*</div>
+        <div class="btn" onclick="log('1')">1</div>
+        <div class="btn" onclick="log('2')">2</div>
+        <div class="btn" onclick="log('3')">3</div>
+        <div class="btn" onclick="log('-')">-</div>
+        <div class="btn" onclick="log('0')">0</div>
+        <div class="btn" onclick="log('.')">.</div>
+        <div class="btn" onclick="log('=')">=</div>
+        <div class="btn" onclick="log('+')">+</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const input = document.getElementsByTagName('input')[0];
+
+    const log = (text) => {
+        if(text === "+" || text === "-" || text === "*" || text === "/" || text === "%" ) {
+            input.value += ` ${text} ` ;
+        } else if(text === "="){
+            const arr = input.value.split(' ');
+            const num1 = Number(arr[0]);
+            const op = arr[1];
+            const num2 = Number(arr[2]);
+            if(op === "-"){
+                input.value = num1 - num2
+            }
+            else if(op === "+"){
+                input.value = num1 + num2
+            }
+            else if ( op === "*"){
+                input.value = num1 * num2
+            }
+            else if(op === "/"){
+                input.value = num1 / num2
+            }
+            else if(op === "%"){
+                input.value = num1 / 100
+            }
+        }    
+        else if(text === "ac"){
+            input.value = " "
+        }
+         else {
+            input.value += text
+        }
+
+    }
+    ;
+  </script>
+</html>

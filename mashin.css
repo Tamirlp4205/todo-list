@@ -1,0 +1,24 @@
+*{
+    margin: 0%;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+.input{
+    width: 1000px;
+    height: 200px;
+    background-color: white;
+}
+.con{
+    width: 1000px;
+    height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    gap: 10px;
+    border-radius:100px;
+}
+.btn{
+    width: calc(970px / 4) ;
+}
